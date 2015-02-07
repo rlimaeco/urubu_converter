@@ -42,6 +42,7 @@
         <!-- Most third-party libraries should go here. References (below) are just examples to give you the general idea... -->
         <!-- <script src="lib/ft/fastclick.js"></script> -->
         <script src="money.js"></script>
+        <script src="math.min.js"></script>
         <script src="intelxdk.js"></script>
         <!-- phantom library, needed for XDK "legacy" container api calls -->
         <script src="cordova.js"></script>
@@ -96,11 +97,17 @@
         <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
         <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
 
+        <header class="container-group wrap-element uib_w_27" data-uib="app_framework/header" data-ver="1" id="af-header-1">
+            <h1></h1>
+            <div class="widget-container wrapping-col single-centered"></div>
+            <div class="widget-container content-area horiz-area wrapping-col header-left"></div>
+            <div class="widget-container content-area horiz-area wrapping-col header-right"></div>
+        </header>
         <div class="uwrap" id="content">
             <div class="upage panel" id="mainpage" data-header="af-header-0" data-footer="none">
                 <div class="upage-outer">
                     <header class="container-group inner-element uib_w_1" data-uib="app_framework/header" data-ver="1" id="af-header-0">
-                        <h1>UrubuConverter</h1>
+                        <h1>Urubu</h1>
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left">
                             <a class="button widget uib_w_9 d-margins icon settings" data-uib="app_framework/button" data-ver="1" id="sidemenu_button"></a>
@@ -113,13 +120,8 @@
                             <div class="col uib_col_1 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
 
-                                    <div class="table-thing with-label widget uib_w_13 d-margins" data-uib="app_framework/select" data-ver="1">
-                                        <select class="wide-control">
-                                            <option>Moeda</option>
-                                            <option>Distância</option>
-                                            <option>Peso</option>
-                                            <option>Etc</option>
-                                        </select>
+                                    <div class="table-thing with-label widget uib_w_18 d-margins" data-uib="app_framework/input" data-ver="1">
+                                        <input class="wide-control" type="text" id="input1" placeholder="Valor a ser convertido">
                                     </div>
                                     <div class="table-thing with-label widget uib_w_14 d-margins" data-uib="app_framework/select" data-ver="1">
                                         <select class="wide-control" id="unidade1">
@@ -293,19 +295,9 @@
                                             <option>ZWL</option>
                                         </select>
                                     </div>
+                                    <a class="button widget uib_w_25 d-margins icon refresh" data-uib="app_framework/button" data-ver="1" id="mudar"></a>
 
-                                    <div class="table-thing with-label widget uib_w_18 d-margins" data-uib="app_framework/input" data-ver="1">
-                                        <input class="wide-control" type="text" id="input1">
-                                    </div>
-                                    <div class="widget uib_w_15 d-margins align" data-uib="media/text" data-ver="0">
-                                        <div class="widget-container left-receptacle"></div>
-                                        <div class="widget-container right-receptacle"></div>
-                                        <div>
-                                            <p>Para</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="table-thing with-label widget uib_w_16 d-margins right" data-uib="app_framework/select" data-ver="1">
+                                    <div class="table-thing with-label widget uib_w_16 d-margins" data-uib="app_framework/select" data-ver="1">
                                         <select class="wide-control" id="unidade2">
                                             <option>AED</option>
                                             <option>AFN</option>
@@ -477,19 +469,21 @@
                                             <option>ZWL</option>
                                         </select>
                                     </div>
+
                                     <div class="table-thing with-label widget uib_w_19 d-margins" data-uib="app_framework/input" data-ver="1">
                                         <input class="wide-control" type="text" id="input2">
-                                    </div><a class="button widget uib_w_17 d-margins icon loading" data-uib="app_framework/button" data-ver="1">Converter</a>
-
-                                    <div class="widget uib_w_20" data-uib="widgets/console" data-ver="0">
-                                        <textarea></textarea>
-                                        <input type="text">
-                                        <button>eval</button>
                                     </div>
+                                    <a class="button widget uib_w_17 d-margins icon loading" data-uib="app_framework/button" data-ver="1">Converter</a>
 
                                     <span class="uib_shim"></span>
                                 </div>
+                                <div class="sbs-container widget uib_w_21 uib-absolute d-margins uib-absolute-positioning-0" data-uib="layout/side_by_side" data-ver="0">
+                                    <div class="leftContent widget-container"></div>
+                                    <div class="rightContent widget-container"></div>
+                                </div>
+
                             </div>
+
                             <span class="uib_shim"></span>
                         </div>
                     </div>
@@ -504,9 +498,9 @@
                                     <div class="widget-container content-area vertical-col">
 
                                         <ul class="list widget uib_w_4 d-margins" data-uib="app_framework/listview" data-ver="1">
-                                            <li class="widget uib_w_5" data-uib="app_framework/listitem" data-ver="1"><a class="icon target">Unidades</a>
+                                            <li class="widget uib_w_5" data-uib="app_framework/listitem" data-ver="1"><a class="icon graph">Moeda</a>
                                             </li>
-                                            <li class="widget uib_w_6" data-uib="app_framework/listitem" data-ver="1"><a class="icon tools">Configurações</a>
+                                            <li class="widget uib_w_26" data-uib="app_framework/listitem" data-ver="1"><a class="icon database">Unidades</a>
                                             </li>
 
                                         </ul><span class="uib_shim"></span>
@@ -520,7 +514,245 @@
                 </div>
                 <!-- /upage-outer -->
 
-                <div id="config" class="upage-content vertical-col left hidden"></div>
+                <div id="units" class="upage-content vertical-col hidden">
+                    <div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_3 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <ul class="list widget uib_w_28 d-margins" data-uib="app_framework/listview" data-ver="1">
+                                    <li class="widget uib_w_29" data-uib="app_framework/listitem" data-ver="1"><a>Comprimento</a>
+                                    </li>
+                                    <li class="widget uib_w_30" data-uib="app_framework/listitem" data-ver="1"><a>Volume</a>
+                                    </li>
+                                    <li class="widget uib_w_31" data-uib="app_framework/listitem" data-ver="1"><a>Massa</a>
+                                    </li>
+                                    <li class="widget uib_w_32" data-uib="app_framework/listitem" data-ver="1"><a>Área</a>
+                                    </li>
+                                    <li class="widget uib_w_33" data-uib="app_framework/listitem" data-ver="1"><a>Tempo</a>
+                                    </li>
+                                </ul><span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+                <div id="comprimento" class="upage-content vertical-col hidden">
+                    <div class="grid grid-pad urow uib_row_4 row-height-4" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_4 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="table-thing with-label widget uib_w_34 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <input class="wide-control" placeholder="Unidade a ser convertida" type="text" id="unit1">
+                                </div>
+                                <div class="table-thing with-label widget uib_w_35 d-margins" data-uib="app_framework/select" data-ver="1">
+                                    <select class="wide-control" id="unitselect1">
+                                        <option>mm</option>
+                                        <option>cm</option>
+                                        <option>m</option>
+                                        <option>km</option>
+                                        <option>in</option>
+                                        <option>ft</option>
+                                        <option>yd</option>
+                                        <option>mi</option>
+                                        <option>li</option>
+                                        <option>rd</option>
+                                        <option>ch</option>
+                                        <option>angstrom</option>
+                                    </select>
+                                </div>
+                                <a class="button widget uib_w_36 d-margins icon refresh" data-uib="app_framework/button" data-ver="1" id="unitmudar"></a>
+                                <div class="table-thing with-label widget uib_w_38 d-margins" data-uib="app_framework/select" data-ver="1">
+                                    <select class="wide-control" id="unitselect2">
+                                        <option>mm</option>
+                                        <option>cm</option>
+                                        <option>m</option>
+                                        <option>km</option>
+                                        <option>in</option>
+                                        <option>ft</option>
+                                        <option>yd</option>
+                                        <option>mi</option>
+                                        <option>li</option>
+                                        <option>rd</option>
+                                        <option>ch</option>
+                                        <option>angstrom</option>
+                                    </select>
+                                </div>
+                                <div class="table-thing with-label widget uib_w_37 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <input class="wide-control" type="text" id="unitresposta">
+                                </div><a class="button widget uib_w_39 d-margins icon loading" data-uib="app_framework/button" data-ver="1">Converter</a>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+                <div id="volume" class="upage-content vertical-col hidden">
+                    <div class="grid grid-pad urow uib_row_5 row-height-5" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="table-thing with-label widget uib_w_40 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <input class="wide-control" placeholder="Volume a ser convertido" type="text" id="volume1">
+                                </div>
+                                <div class="table-thing with-label widget uib_w_41 d-margins" data-uib="app_framework/select" data-ver="1">
+                                    <select class="wide-control" id="volumeselect1">
+                                        <option>cm3</option>
+                                        <option>m3</option>
+                                        <option>l</option>
+                                        <option>cc</option>
+                                        <option>cuin</option>
+                                        <option>cuft</option>
+                                        <option>cuyd</option>
+                                        <option>teaspoon</option>
+                                        <option>tablespoon</option>
+                                    </select>
+                                </div>
+                                <a class="button widget uib_w_42 d-margins icon refresh" data-uib="app_framework/button" data-ver="1" id="volumemudar"></a>
+                                <div class="table-thing with-label widget uib_w_43 d-margins" data-uib="app_framework/select" data-ver="1">
+                                    <select class="wide-control" id="volumeselect2">
+                                        <option>cm3</option>
+                                        <option>m3</option>
+                                        <option>l</option>
+                                        <option>cc</option>
+                                        <option>cuin</option>
+                                        <option>cuft</option>
+                                        <option>cuyd</option>
+                                        <option>teaspoon</option>
+                                        <option>tablespoon</option>
+                                    </select>
+                                </div>
+                                <div class="table-thing with-label widget uib_w_46 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <input class="wide-control" type="text" id="volumeresposta">
+                                </div><a class="button widget uib_w_44 d-margins icon loading" data-uib="app_framework/button" data-ver="1" id="volumeconverter">Converter</a>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+                <div id="massa" class="upage-content vertical-col hidden">
+                    <div class="grid grid-pad urow uib_row_6 row-height-6" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_6 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="table-thing with-label widget uib_w_47 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <input class="wide-control" type="text" placeholder="Massa a ser convertida" id="massa1">
+                                </div>
+                                <div class="table-thing with-label widget uib_w_48 d-margins" data-uib="app_framework/select" data-ver="1">
+                                    <select class="wide-control" id="massaselect1">
+                                        <option>mg</option>
+                                        <option>g</option>
+                                        <option>kg</option>
+                                        <option>ton</option>
+                                        <option>gr</option>
+                                        <option>dr</option>
+                                        <option>oz</option>
+                                        <option>lb</option>
+                                    </select>
+                                </div>
+                                <a class="button widget uib_w_49 d-margins icon refresh" data-uib="app_framework/button" data-ver="1" id="massamudar"></a>
+                                <div class="table-thing with-label widget uib_w_50 d-margins" data-uib="app_framework/select" data-ver="1">
+                                    <select class="wide-control" id="massaselect2">
+                                        <option>mg</option>
+                                        <option>g</option>
+                                        <option>kg</option>
+                                        <option>ton</option>
+                                        <option>gr</option>
+                                        <option>dr</option>
+                                        <option>oz</option>
+                                        <option>lb</option>
+                                    </select>
+                                </div>
+                                <div class="table-thing with-label widget uib_w_51 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <input class="wide-control" type="text" id="massaresposta">
+                                </div><a class="button widget uib_w_52 d-margins icon loading" data-uib="app_framework/button" data-ver="1" id="massaconverter">Converter</a><span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+                <div id="area" class="upage-content vertical-col hidden">
+                    <div class="grid grid-pad urow uib_row_7 row-height-7" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_7 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="table-thing with-label widget uib_w_53 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <input class="wide-control" placeholder="Área a ser convertida" type="text" id="area1">
+                                </div>
+                                <div class="table-thing with-label widget uib_w_54 d-margins" data-uib="app_framework/select" data-ver="1">
+                                    <select class="wide-control" id="areaselect1">
+                                        <option>mm2</option>
+                                        <option>cm2</option>
+                                        <option>m2</option>
+                                        <option>km2</option>
+                                        <option>sqin</option>
+                                        <option>sqft</option>
+                                        <option>sqyd</option>
+                                        <option>sqmi</option>
+                                        <option>sqrd</option>
+                                        <option>sqch</option>
+                                        <option>sqmil</option>
+                                    </select>
+                                </div>
+                                <a class="button widget uib_w_55 d-margins icon refresh" data-uib="app_framework/button" data-ver="1" id="areamudar"></a>
+                                <div class="table-thing with-label widget uib_w_56 d-margins" data-uib="app_framework/select" data-ver="1">
+                                    <select class="wide-control" id="areaselect2">
+                                        <option>mm2</option>
+                                        <option>cm2</option>
+                                        <option>m2</option>
+                                        <option>km2</option>
+                                        <option>sqin</option>
+                                        <option>sqft</option>
+                                        <option>sqyd</option>
+                                        <option>sqmi</option>
+                                        <option>sqrd</option>
+                                        <option>sqch</option>
+                                        <option>sqmil</option>
+                                    </select>
+                                </div>
+                                <div class="table-thing with-label widget uib_w_57 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <input class="wide-control" type="text" id="arearesposta">
+                                </div><a class="button widget uib_w_58 d-margins" data-uib="app_framework/button" data-ver="1" id="areaconverter">Converter</a><span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+                <div id="velocidade" class="upage-content vertical-col hidden">
+                    <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_8 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="table-thing with-label widget uib_w_59 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <input class="wide-control" placeholder="Tempo à converter" type="text" id="tempo1">
+                                </div>
+                                <div class="table-thing with-label widget uib_w_60 d-margins" data-uib="app_framework/select" data-ver="1">
+                                    <select class="wide-control" id="temposelect1">
+                                        <option>seconds</option>
+                                        <option>minute</option>
+                                        <option>minutes</option>
+                                        <option>hours</option>
+                                        <option>days</option>
+                                    </select>
+                                </div>
+                                <a class="button widget uib_w_61 d-margins icon refresh" data-uib="app_framework/button" data-ver="1" id="tempomudar"></a>
+                                <div class="table-thing with-label widget uib_w_62 d-margins" data-uib="app_framework/select" data-ver="1">
+                                    <select class="wide-control" id="temposelect2">
+                                        <option>seconds</option>
+                                        <option>minute</option>
+                                        <option>minutes</option>
+                                        <option>hours</option>
+                                        <option>days</option>
+                                    </select>
+                                </div>
+                                <div class="table-thing with-label widget uib_w_63 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <input class="wide-control" type="text" id="temporesposta">
+                                </div><a class="button widget uib_w_64 d-margins icon refresh" data-uib="app_framework/button" data-ver="1" id="tempoconverter">Converter</a><span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
             </div>
             <!-- /upage -->
 

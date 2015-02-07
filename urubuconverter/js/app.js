@@ -1,29 +1,20 @@
-// DOMContentLoaded is fired once the document has been loaded and parsed,
-// but without waiting for other external resources to load (css/images/etc)
-// That makes the app more responsive and perceived as faster.
-// https://developer.mozilla.org/Web/Reference/Events/DOMContentLoaded
-window.addEventListener('DOMContentLoaded', function() {
+/*
+ * Please see the included README.md file for license terms and conditions.
+ */
 
-  // We'll ask the browser to use strict code to help us catch errors earlier.
-  // https://developer.mozilla.org/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode
-  'use strict';
 
-  var translate = navigator.mozL10n.get;
+/*jslint browser:true, devel:true, white:true, vars:true */
+/*global $:false, intel:false app:false, dev:false, cordova:false */
 
-  // We want to wait until the localisations library has loaded all the strings.
-  // So we'll tell it to let us know once it's ready.
-  navigator.mozL10n.once(start);
 
-  // ---
 
-  function start() {
+// This file contains your event handlers, the center of your application.
+// See app.initEvents() in init-app.js for event initialization.
 
-    var message = document.getElementById('message');
+// function myEventHandler() {
+//     "use strict" ;
+// // ...event handler code here...
+// }
 
-    // We're using textContent because inserting content from external sources into your page using innerHTML can be dangerous.
-    // https://developer.mozilla.org/Web/API/Element.innerHTML#Security_considerations
-    message.textContent = translate('message');
 
-  }
-
-});
+// ...additional event handlers here...
