@@ -100,6 +100,9 @@
         var saida = fx.convert(input1);
         document.getElementById("input2").value = saida;
         
+        console.log(input1);
+        console.log(saida);
+        
 
     });
     

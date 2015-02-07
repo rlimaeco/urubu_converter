@@ -299,7 +299,7 @@ body:not(#afui) .upage-outer {
 }
 @media all and (min-width: 320px) {
   #afui .row-height-1 > .col > .content-area {
-    min-height: 487px;
+    min-height: 676px;
   }
 }
 .left-receptacle {
@@ -309,12 +309,18 @@ body:not(#afui) .upage-outer {
   float: right;
 }
 @media all {
-  #afui .d-margins {
-    margin-bottom: 10px;
-  }
-  #afui .wrapping-col > .d-margins {
+  #afui .wrapping-col > .d-margins,
+  #afui .wrapping-col > .afScrollPanel > .d-margins {
     margin-left: 6px;
     margin-right: 6px;
+  }
+  #afui .wrapping-col > .d-margins,
+  #afui .wrapping-col > .afScrollPanel > .d-margins {
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+  #afui .d-margins {
+    margin-bottom: 10px;
   }
 }
 .uib_row_2:not(.cright) > .col {
@@ -476,4 +482,37 @@ body:not(#afui) .upage-outer {
 }
 [data-uib='widgets/console'] input {
   width: calc(100% - 60px);
+}
+.sbs-container {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -o-flex;
+  display: flex;
+  flex-direction: row;
+}
+.leftContent,
+.rightContent {
+  display: inline;
+  width: 50%;
+}
+@media all {
+  #afui .wrapping-col > .right,
+  #afui .wrapping-col > .afScrollPanel > .right {
+    margin-left: 20px;
+    margin-right: 6px;
+  }
+  #afui .wrapping-col > .right,
+  #afui .wrapping-col > .afScrollPanel > .right {
+    margin-left: 20px;
+    margin-right: 6px;
+  }
+}
+#afui .input-group .widget input:not([type="submit"]):not([type="button"]):last-child,
+#afui .input-group .widget textarea:last-child,
+#afui .input-group .widget select:last-child {
+  border-bottom: 1px solid #CCC;
+}
+#afui .input-group > .col > .content-area > .d-margins {
+  margin: 0;
 }
